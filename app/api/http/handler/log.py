@@ -71,9 +71,19 @@ class LogRecordHandler:
 
         try:
             request = await request.json()
+
+            offset = int(request["offset"])
+            limit = int(request.get("limit") or 10)
+
+            if limit < 0 or offset < 0:
+                raise HTTPRequestException(
+                f"""Offset or limit contain invalid value. All value in this fields must be above zero.
+                Current request {request}"""
+            )
+
             options = LogRecordOptionsDTO(
-                offset=int(request["offset"]),
-                limit=int(request.get("limit") or 10),
+                offset=offset,
+                limit=limit,
             )
 
         except JSONDecodeError as decode_err:
