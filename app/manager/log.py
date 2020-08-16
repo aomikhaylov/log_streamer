@@ -1,7 +1,6 @@
 # Author: Anton Mikhaylov
 # Created: 16/08/2020
 
-from app.config import CONFIGURATION
 
 from app.dao import LogRecordDAO
 from app.dao.exception import DAOException

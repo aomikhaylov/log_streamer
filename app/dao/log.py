@@ -18,7 +18,10 @@ class LogRecordDAO(BaseDAO):
     """
     def __init__(self):
         if not self._records:
-            self.__prepare_data()
+            try:
+                self.__prepare_data()
+            except DAOException as err:
+                print(f"WARN: {err}")
 
     def __prepare_data(self):
         """

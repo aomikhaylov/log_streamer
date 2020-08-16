@@ -2,7 +2,6 @@
 # Created: 16/08/2020
 
 from json import JSONDecodeError
-from typing import Dict, Any
 
 from aiohttp import web
 
